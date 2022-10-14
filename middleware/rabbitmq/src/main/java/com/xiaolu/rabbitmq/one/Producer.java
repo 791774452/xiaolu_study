@@ -5,6 +5,7 @@ import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 
 import java.io.IOException;
+import java.util.Scanner;
 import java.util.concurrent.TimeoutException;
 
 /**
@@ -36,8 +37,7 @@ public class Producer {
          * 5、其他参数
          */
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-        // 发消息
-        String message = "hello world";
+
 
         /*
          * 发送一个消费
@@ -46,8 +46,13 @@ public class Producer {
          * 3、其他参数消息
          * 4、消息体
          */
-        channel.basicPublish("", QUEUE_NAME, null, message.getBytes());
-        System.out.println("发送完毕");
+        Scanner scanner = new Scanner(System.in);
+        while (scanner.hasNext()) {
+            // 发消息
+            String message = scanner.next();
+            channel.basicPublish("", QUEUE_NAME, null, message.getBytes());
+            System.out.println("发送完毕");
+        }
 
     }
 
@@ -62,9 +67,10 @@ public class Producer {
         // 密码
         factory.setPassword("123");
         // 创建链接
-        try (Connection connection = factory.newConnection()) {
-            // 获取信道
-            return connection.createChannel();
-        }
+        Connection connection = factory.newConnection();
+        // 获取信道
+        return connection.createChannel();
+
+
     }
 }

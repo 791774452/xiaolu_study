@@ -1,5 +1,5 @@
 package com.xiaolu.jdk;
-import com.fasterxml.jackson.core.JsonProcessingException;
+
 import lombok.SneakyThrows;
 
 import java.util.concurrent.TimeUnit;
@@ -40,6 +40,7 @@ public class ThreadInterrupted {
             }
         }
     }
+
     static class BusyRunner implements Runnable {
         @Override
         public void run() {

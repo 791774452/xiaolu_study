@@ -16,18 +16,17 @@ import static com.xiaolu.rabbitmq.one.Producer.getChannel;
  * @since 2022/9/22
  */
 public class Consumer {
-    public static final String QUEUE_NAME ="hello";
+    public static final String QUEUE_NAME ="hello_xiaolu";
 
     public static void main(String[] args) throws IOException, TimeoutException {
         Channel channel = getChannel();
-
         DeliverCallback deliverCallback =(consumerTag, message)->{
             System.out.println(new String(message.getBody()));
         };
         CancelCallback cancelCallback= consumerTag->{
             System.out.println("消费消息中断");
         };
-        System.out.println("C1等待消息........");
+        System.out.println("C2等待中......");
         channel.basicConsume(QUEUE_NAME,true,deliverCallback,cancelCallback);
     }
 }
