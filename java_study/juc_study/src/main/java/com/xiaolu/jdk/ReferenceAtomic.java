@@ -10,6 +10,7 @@ public class ReferenceAtomic {
 
         ar.compareAndSet(oldUser, new User("F",12));
         System.out.println(ar.get());
+        System.out.println(oldUser);
     }
 
     static class User {

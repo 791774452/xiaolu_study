@@ -1,0 +1,211 @@
+## juc工具类
+
+### CoutDownLatch
+
+CoutDownLatch：类似于.join()方法，等待其他线程完成后才会执行下面的代码。await();阻塞当前线程，countDown(); 对计数器递减1操作，当计数器为0时，会去唤醒阻塞线程。
+
+
+
+示例代码：
+
+```java
+public class CyclicBarrierTest {
+    /**
+     * 使用 CountDownLatch
+     */
+    static CountDownLatch cd = new CountDownLatch(2);
+    static int[] array = new int[2];
+    public static void main(String[] args) throws InterruptedException {
+        Thread A = new Thread(() -> {
+            //计算 3*5
+            array[0] = 3*5;
+            cd.countDown();
+        });
+        Thread B = new Thread(() -> {
+            //计算 10+2
+            array[1] = 10+2;
+            cd.countDown();
+        });
+        A.start();
+        B.start();
+        cd.await();
+        System.out.println(array[0] + array[1]); //27
+    }
+
+}
+```
+
+
+
+### CyclicBarrier
+
+CyclicBarrier：可循环的屏障，当线程执行完后会被阻塞在屏障点，等待所有线程都到达屏障后才会继续往下执行。默认构造方法入参代表拦截线程数量。每个线程的await();方法告诉cyclicBarrier我已到达屏障，然后当前线程阻塞。
+
+```java
+public class CyclicBarrierTest1 {
+    /**
+     * 使用 CyclicBarrier
+     */
+    static CyclicBarrier cb = new CyclicBarrier(3);
+    static int[] array = new int[2];
+    public static void main(String[] args) throws InterruptedException, BrokenBarrierException {
+        Thread A = new Thread(() -> {
+            //计算 3*5
+            array[0] = 3*5;
+            try {
+                cb.await();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (BrokenBarrierException e) {
+                e.printStackTrace();
+            }
+        });
+        Thread B = new Thread(() -> {
+            //计算 10+2
+            array[1] = 10+2;
+            try {
+                cb.await();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (BrokenBarrierException e) {
+                e.printStackTrace();
+            }
+        });
+        A.start();
+        B.start();
+        cb.await();
+        System.out.println(array[0] + array[1]);
+
+        // 对于这个场景，建议使用CountdownLatch。因为CountdownLatch里边的参数直接写的是2，就是进行2次倒计时，我们的main函数
+        //调用的await。就是告诉我们main线程在等待其他两个线程执行完毕。
+        // 然而，对于 CyclicBarrier 这种实现形式，main函数和其他两个线程都被阻塞到了一个地方。此处main函数到达了屏障之后
+        //挂起自己，等待其他两个线程达到屏障之后才开始执行。
+
+        // CountdownLatch 针对业务完成之后放行；（赛跑的过程里边的到达终点。）
+        // CyclicBarrier 针对的是所有的线程在统一的屏障集合之后开始 （赛跑过程里边的起跑线。）
+    }
+
+}
+```
+
+
+
+CyclicBarrier入参为（parties ——在障碍被触发之前必须调用await的线程数 barrierAction – 当障碍被触发时执行的命令，如果没有动作则为null）
+
+```java
+
+public class CyclicBarrierTest2 implements Runnable{
+    /**
+     * 使用 CyclicBarrier
+     */
+    CyclicBarrier cb = new CyclicBarrier(2,this);
+    int[] array = new int[2];
+    public void calcute(){
+        Thread A = new Thread(() -> {
+            //计算 3*5
+            array[0] = 3*5;
+            try {
+                cb.await();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (BrokenBarrierException e) {
+                e.printStackTrace();
+            }
+        });
+        Thread B = new Thread(() -> {
+            //计算 10+2
+            array[1] = 10+2;
+            try {
+                cb.await();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (BrokenBarrierException e) {
+                e.printStackTrace();
+            }
+        });
+        A.start();
+        B.start();
+    }
+
+    @Override
+    public void run() {
+        System.out.println(array[0] + array[1]);
+    }
+
+    public static void main(String[] args) {
+        CyclicBarrierTest2 cyclicBarrierTest2 = new CyclicBarrierTest2();
+        cyclicBarrierTest2.calcute();
+    }
+
+    // 我们的cycbarrier 能够支持 一个 runnable的 action去做后续的数据的操作。能够适用于更加复杂的
+    // 场景。
+}
+
+```
+
+
+
+### Semaphore（信号量）
+
+Semaphore（信号量）是用来控制访问线程的最大数量，通过协调各个线程，以保证合理的使用公共资源。
+
+Semaphore可以用于流量控制，特别是公共资源有限的场景，如数据库。
+
+```java
+public class SemaphoreTest {
+    static Semaphore s = new Semaphore(10);
+    public static void main(String[] args) {
+        for(int i = 0 ; i < 100; i++) {
+            Thread a = new Thread(() -> {
+                try {
+                    s.acquire();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("链接db，保存数据。");
+                s.release();
+            });
+            a.start();
+        }
+    }
+}
+
+```
+
+### Exchanger 线程间数据交换
+
+Exchanger（交换者）是一个用于两个
+
+线程间协作的工具类。Exchanger用于进行线程间的数据交换。它提供一个同步点，在这个同步点，两个线程可以交换彼此的数据。这两个线程通过exchange方法交换数据，如果第一个线程先执行exchange()方法，它会一直等待第二个线程也执行exchange方法，当两个线程都到达同步点时，这两个线程就可以交换数据，将本线程生产出来的数据传递给对方
+
+```java
+public class ExchangerTest {
+    static Exchanger<String> exchanger = new Exchanger<>();
+    public static void main(String[] args) {
+        Thread A = new Thread(() -> {
+            String a = "aa";
+            String b = "";
+            try {
+                b = exchanger.exchange(a);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("线程A： " + a + b);
+        });
+        Thread B = new Thread(() -> {
+            String b = "bb";
+            String a = "";
+            try {
+               a = exchanger.exchange(b);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("线程B： " + b  + a);
+        });
+        A.start();
+        B.start();
+    }
+}
+
+```
+
