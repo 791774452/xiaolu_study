@@ -1,14 +1,16 @@
 package cn.itedus.lottery.infrastructure.po;
 
+import lombok.Data;
+
 import java.util.Date;
 
 /**
- * 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
- * 公众号：bugstack虫洞栈
- * Create by 小傅哥(fustack)
- * <p>
  * 策略配置
+ *
+ * @author xiaolu
+ * @since 2022-12-11
  */
+@Data
 public class Strategy {
 
     // 自增ID
@@ -38,75 +40,4 @@ public class Strategy {
     // 修改时间
     private Date updateTime;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getStrategyId() {
-        return strategyId;
-    }
-
-    public void setStrategyId(Long strategyId) {
-        this.strategyId = strategyId;
-    }
-
-    public String getStrategyDesc() {
-        return strategyDesc;
-    }
-
-    public void setStrategyDesc(String strategyDesc) {
-        this.strategyDesc = strategyDesc;
-    }
-
-    public Integer getStrategyMode() {
-        return strategyMode;
-    }
-
-    public void setStrategyMode(Integer strategyMode) {
-        this.strategyMode = strategyMode;
-    }
-
-    public Integer getGrantType() {
-        return grantType;
-    }
-
-    public void setGrantType(Integer grantType) {
-        this.grantType = grantType;
-    }
-
-    public Date getGrantDate() {
-        return grantDate;
-    }
-
-    public void setGrantDate(Date grantDate) {
-        this.grantDate = grantDate;
-    }
-
-    public String getExtInfo() {
-        return extInfo;
-    }
-
-    public void setExtInfo(String extInfo) {
-        this.extInfo = extInfo;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
 }
