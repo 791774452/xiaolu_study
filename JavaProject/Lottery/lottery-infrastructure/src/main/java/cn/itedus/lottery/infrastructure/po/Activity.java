@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * 活动基础信息表
+ * 活动基础信息po
  *
  * @author xiaolu
  * @since 2022-12-10

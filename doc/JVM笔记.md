@@ -20,3 +20,11 @@
 
 
 
+````shell
+groovyScript("def result = '';def params = \"${_1}\".replaceAll('[\\\\[|\\\\]|\\\\s]', '').split(',').toList(); for(i = 0; i < params.size(); i++) {if(params[i] != '')result+='* @param ' + params[i] + ' '+ params[i]+ ((i < params.size() - 1) ? ' \\r\\n ' : '')}; return result == '* @param null null' ? null : '\\r\\n ' + result", methodParameters())
+````
+
+````shell
+groovyScript("def result='\\r\\n * @return ';  def params=\"${_1}\".replaceAll('[\\\\[|\\\\]|\\\\s]', '').split('<').toList(); for(i = 0; i < params.size(); i++) {if(i!=0){result+='<';};  def p1=params[i].split(',').toList();  for(i2 = 0; i2 < p1.size(); i2++)  { def p2=p1[i2].split('\\\\.').toList();  result+=p2[p2.size()-1]; if(i2!=p1.size()-1){result+=','}  } ; };  return result=='\\r\\n * @return null' ? '' :result", methodReturnType())  
+````
+
