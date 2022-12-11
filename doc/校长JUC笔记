@@ -209,3 +209,61 @@ public class ExchangerTest {
 
 ```
 
+
+
+## 线程安全的队列
+
+### ConcurrentLinkedQueue
+
+ConcurrentLinkedQueue是基于链表的无界线程安全队列FIOI，采用CAS算法来实现
+
+
+
+### 阻塞队列（BlockingQueue）
+
+（1）、支持阻塞插入：即队列满了之后，将会阻塞插入元素的线程，直至队列不满。
+
+（2）、支持阻塞的移除方法：即队列为空时，等待队列不为空。
+
+| 方法/处理方式 | 抛出异常  | 返回特殊值 | 一直阻塞 | 超时退出            |
+| ------------- | --------- | ---------- | -------- | ------------------- |
+| 插入方法      | add(e)    | Offer(e)   | Put(e)   | Offer(e, time,unit) |
+| 移除方法      | Remove()  | Poll()     | take()   | poll(time, unit)    |
+| 检查方法      | element() | peek()     | 不可用   | 不可用              |
+
+
+
+1. **ArrayBlockingQueue 与 LinkedBlockingQueue**
+
+   ArrayBlockingQueue是一个用数组实现的**有界阻塞队列**。此队列按照**先进先出（FIFO）**的原则对元素进行排序。
+
+   LinkedBlockingQueue是一个用**链表**实现的**有界阻塞队列**。此队列的默认和最大长度为Integer.MAX_VALUE。此队列按照**先进先出**的原则对元素进行
+
+2. **PriorityBlockingQueue 和 DelayQueue**
+
+   **PriorityBlockingQueue**：
+
+   PriorityBlockingQueue是一个支持优先级的无界阻塞队列。默认情况下元素采取自然顺序升序排列。也可以自定义类实现compareTo()方法来指定元素排序规则，或者初始化PriorityBlockingQueue时，指定构造参数Comparator来对元素进行排序。需要注意的是不能保证同优先级元素的顺序。
+
+   **DelayQueue：**
+
+   DelayQueue是一个**支持延时**获取元素的无界阻塞队列。队列使用**PriorityQueue**来实现。队列中的元素必须实现**Delayed接口**，在创建元素时可以指定多久才能从队列中获取当前元素。只有在延迟期满时才能从队列中提取元素。
+
+   **DelayQueue非常有用，可以将DelayQueue运用在以下应用场景。**
+
+   **缓存系统的设计****(****很少有公司自己设计大型缓存：****Redis****，****ehcache****，****mcache****)**：可以用DelayQueue保存缓存元素的有效期，使用一个线程循环查询DelayQueue，一旦能从DelayQueue中获取元素时，表示缓存有效期到了。
+
+   **定时任务调度**：使用DelayQueue保存当天将会执行的任务和执行时间，一旦从DelayQueue中获取到任务就开始执行，比如TimerQueue就是使用DelayQueue实现的。
+
+3. **SynchronousQueue**
+
+   SynchronousQueue**是一个不存储元素的阻塞队列**。每一个put操作必须等待一个take操作，否则不能继续添加元素。它支持公平访问队列。**默认情况下线程采用非公平性策略访问队列**。使用以下构造方法可以创建公平性访问的SynchronousQueue，如果设置为true，则等待的线程会采用先进先出的顺序访问队列。
+
+   1. 不存储数据的队列，阻塞队列。使用场景，适合短期的小并发场景，且数据处理相当快速。硬要说点好处：首先他们有缓冲容量，那么他可以避免在服务器宕机的情况下，从queue的角度来说，没有数据丢失这么一说。 他类似于一个**传球手**，中间没有任何介质阻碍。如果单纯的进行数据的传递且生产的线程与消费的线程生产时间和消费时间都比较匹配的话，他的性能能够很高。
+
+   2. cachedThreadPool 里边使用的就是syncQueue。cachedThreadPool的使用场景就是处理快速的短期的小并发场景。cachedThreadPool 是没有核心线程数，完全依赖max线程数，直接依赖操作系统创建线程，如果是短期的小并发，在线程达到 keep live 时间以后，可以自行销毁。
+
+
+
+[22]:2
+
