@@ -1,6 +1,8 @@
 package cn.itedus.lottery.infrastructure.po;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
@@ -8,13 +10,15 @@ import java.util.Date;
  * 策略配置
  *
  * @author xiaolu
- * @since 2022-12-11
+ * @since 2022-12-12
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Strategy {
 
     /**
-     *自增ID
+     * 自增ID
      */
     private Long id;
 

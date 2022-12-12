@@ -1,16 +1,20 @@
 package cn.itedus.lottery.infrastructure.po;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
 /**
- * 策略明细po
+ * 策略明细
  *
  * @author xiaolu
- * @since 2022-12-11
+ * @since 2022-12-12
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class StrategyDetail {
 
     /**
@@ -29,9 +33,19 @@ public class StrategyDetail {
     private String awardId;
 
     /**
-     * 奖品数量
+     * 奖品名称
      */
-    private String awardCount;
+    private String awardName;
+
+    /**
+     * 奖品库存
+     */
+    private Integer awardCount;
+
+    /**
+     * 奖品剩余库存
+     */
+    private Integer awardSurplusCount;
 
     /**
      * 中奖概率

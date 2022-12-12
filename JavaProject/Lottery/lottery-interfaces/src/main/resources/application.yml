@@ -6,17 +6,19 @@ spring:
     username: root
 #    update user set authentication_string=password('mysql_108') where Host='localhost' and User='root';
     password: mysql_108
-    url: jdbc:mysql://127.0.0.1:3306/lottery?useUnicode=true
+    url: jdbc:mysql://127.0.0.1:3306/lottery?useUnicode=true&characterEncoding=UTF-8
     driver-class-name: com.mysql.jdbc.Driver
 
 mybatis:
   mapper-locations: classpath:/mybatis/mapper/*.xml
   config-location:  classpath:/mybatis/config/mybatis-config.xml
-# Dubbo 广播方式配置
+# Dubbo 广播方式配置，如果调用不稳定可以修改为直连模式：https://codechina.csdn.net/KnowledgePlanet/Lottery/-/issues/1
 dubbo:
   application:
     name: Lottery
     version: 1.0.0
+    parameters:
+      unicast: false
   registry:
     address: N/A #multicast://224.5.6.7:1234
   protocol:

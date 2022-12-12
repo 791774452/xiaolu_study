@@ -6,14 +6,13 @@ import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 
 /**
- * 策略配置mapper
+ * 策略明细表DAO
  *
  * @author xiaolu
- * @since 2022-12-11
+ * @since 2022-12-12
  */
 @Mapper
 public interface IStrategyDetailDao {
-
 
     /**
      * 查询策略表详细配置
@@ -35,6 +34,5 @@ public interface IStrategyDetailDao {
      * @return                  返回结果
      */
     int deductStock(StrategyDetail strategyDetailReq);
-
 
 }

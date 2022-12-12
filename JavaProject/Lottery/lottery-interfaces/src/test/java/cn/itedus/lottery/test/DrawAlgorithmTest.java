@@ -14,16 +14,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
- * 公众号：bugstack虫洞栈
- * Create by 小傅哥(fustack)
+ * 单元测试
+ *
+ * @author xiaolu
+ * @since 2022-12-12
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class DrawAlgorithmTest {
 
-//    @Resource(name = "defaultRateRandomDrawAlgorithm")
-    @Resource(name = "singleRateRandomDrawAlgorithm")
+    @Resource(name = "entiretyRateRandomDrawAlgorithm")
+    //@Resource(name = "singleRateRandomDrawAlgorithm")
     private IDrawAlgorithm randomDrawAlgorithm;
 
     @Before
