@@ -4,6 +4,7 @@ server:
 spring:
   datasource:
     username: root
+#    update user set authentication_string=password('mysql_108') where Host='localhost' and User='root';
     password: mysql_108
     url: jdbc:mysql://127.0.0.1:3306/lottery?useUnicode=true
     driver-class-name: com.mysql.jdbc.Driver

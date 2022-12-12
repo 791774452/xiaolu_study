@@ -33,7 +33,9 @@ public class StrategyRepository implements IStrategyRepository {
 
     @Override
     public StrategyRich queryStrategyRich(Long strategyId) {
+        // 查询策略配置
         Strategy strategy = strategyDao.queryStrategy(strategyId);
+        // 查询策略明细
         List<StrategyDetail> strategyDetailList = strategyDetailDao.queryStrategyDetailList(strategyId);
         return new StrategyRich(strategyId, strategy, strategyDetailList);
     }
@@ -41,6 +43,19 @@ public class StrategyRepository implements IStrategyRepository {
     @Override
     public Award queryAwardInfo(String awardId) {
         return awardDao.queryAwardInfo(awardId);
+    }
+    @Override
+    public List<String> queryNoStockStrategyAwardList(Long strategyId) {
+        return strategyDetailDao.queryNoStockStrategyAwardList(strategyId);
+    }
+
+    @Override
+    public boolean deductStock(Long strategyId, String awardId) {
+        StrategyDetail req = new StrategyDetail();
+        req.setStrategyId(strategyId);
+        req.setAwardId(awardId);
+        int count = strategyDetailDao.deductStock(req);
+        return count == 1;
     }
 
 }

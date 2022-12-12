@@ -16,12 +16,16 @@
 
 
 
-3. 将dump下来的堆内存快照进行分析。此处介绍 jvisualvm 可视化分析方式。 
+3. 将dump下来的堆内存快照进行分析。此处介绍 jvisualvm 可视化分析方式。
+
+````shell
+ groovyScript("def result = '';def params = \"${_1}\".replaceAll('[\\\\[|\\\\]|\\\\s]', '').split(',').toList(); for(i = 0; i < params.size(); i++) {if(params[i] != '')result+='* @param ' + params[i] + ' '+ params[i]+ ((i < params.size() - 1) ? ' \\r\\n ' : '')}; return result == '* @param null null' ? '': '\\r\\n ' + result", methodParameters())
+````
 
 
 
 ````shell
-groovyScript("def result = '';def params = \"${_1}\".replaceAll('[\\\\[|\\\\]|\\\\s]', '').split(',').toList(); for(i = 0; i < params.size(); i++) {if(params[i] != '')result+='* @param ' + params[i] + ' '+ params[i]+ ((i < params.size() - 1) ? ' \\r\\n ' : '')}; return result == '* @param null null' ? null : '\\r\\n ' + result", methodParameters())
+groovyScript("def result = '';def params = \"${_1}\".replaceAll('[\\\\[|\\\\]|\\\\s]', '').split(',').toList(); for(i = 0; i < params.size(); i++) {if(params[i] != '')result+='* @param ' + params[i] + ' '+ params[i]+ ((i < params.size() - 1) ? ' \\r\\n ' : '')}; return result == '* @param null null' ? null :'\\r\\n * ' + '\\r\\n ' + result", methodParameters())
 ````
 
 ````shell

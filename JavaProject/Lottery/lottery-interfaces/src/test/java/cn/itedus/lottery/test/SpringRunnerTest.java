@@ -43,15 +43,17 @@ public class SpringRunnerTest {
     @Test
     public void test_insert() {
         Activity activity = new Activity();
-        activity.setActivityId(100001L);
-        activity.setActivityName("测试活动");
+        activity.setActivityId(100005L);
+        activity.setActivityName("小鹿读书");
         activity.setActivityDesc("仅用于插入数据测试");
         activity.setBeginDateTime(new Date());
         activity.setEndDateTime(new Date());
         activity.setStockCount(100);
         activity.setTakeCount(10);
         activity.setState(0);
-        activity.setCreator("xiaofuge");
+        activity.setCreateTime(new Date());
+        activity.setUpdateTime(new Date());
+        activity.setCreator("xiaolu");
         activityDao.insert(activity);
     }
 

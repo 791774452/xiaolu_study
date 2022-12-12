@@ -4,10 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
-
 /**
- * 奖品概率信息，奖品编号、库存、概率
+ * 中奖奖品信息
  *
  * @author xiaolu
  * @since 2022-12-11
@@ -15,16 +13,16 @@ import java.math.BigDecimal;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AwardRateInfo {
+public class DrawAwardInfo {
 
     /**
      * 奖品ID
      */
-    private String awardId;
+    private String rewardId;
 
     /**
-     * 中奖概率
+     * 奖品名称
      */
-    private BigDecimal awardRate;
+    private String awardName;
 
 }
