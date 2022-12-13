@@ -13,11 +13,10 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @description: 各类发奖奖品配置类
- * @author: 小傅哥，微信：fustack
- * @date: 2021/9/4
- * @github: https://github.com/fuzhengwei
- * @Copyright: 公众号：bugstack虫洞栈 | 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
+ * 各类发奖奖品配置类
+ *
+ * @author xiaolu
+ * @since 2022-12-12
  */
 public class GoodsConfig {
 
@@ -36,6 +35,11 @@ public class GoodsConfig {
     @Resource
     private PhysicalGoods physicalGoods;
 
+    /**
+     * 在注入完成后调用使方法
+     *
+     * @return void
+     */
     @PostConstruct
     public void init() {
         goodsMap.put(Constants.AwardType.DESC.getCode(), descGoods);

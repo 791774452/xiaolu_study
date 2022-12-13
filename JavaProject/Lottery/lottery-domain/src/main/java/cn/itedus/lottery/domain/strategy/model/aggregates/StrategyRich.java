@@ -1,8 +1,8 @@
 package cn.itedus.lottery.domain.strategy.model.aggregates;
 
 
-import cn.itedus.lottery.infrastructure.po.Strategy;
-import cn.itedus.lottery.infrastructure.po.StrategyDetail;
+import cn.itedus.lottery.domain.strategy.model.vo.StrategyBriefVO;
+import cn.itedus.lottery.domain.strategy.model.vo.StrategyDetailBriefVO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -25,12 +25,9 @@ public class StrategyRich {
     /**
      * 策略配置
      */
-    private Strategy strategy;
+    private StrategyBriefVO strategy;
     /**
      * 策略明细
      */
-    private List<StrategyDetail> strategyDetailList;
-
-    public StrategyRich() {
-    }
+    private List<StrategyDetailBriefVO> strategyDetailList;
 }

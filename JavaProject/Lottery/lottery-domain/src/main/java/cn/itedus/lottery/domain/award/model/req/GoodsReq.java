@@ -1,14 +1,17 @@
 package cn.itedus.lottery.domain.award.model.req;
 
 import cn.itedus.lottery.domain.award.model.vo.ShippingAddress;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
- * @description: 奖品发货信息
- * @author: 小傅哥，微信：fustack
- * @date: 2021/9/4
- * @github: https://github.com/fuzhengwei
- * @Copyright: 公众号：bugstack虫洞栈 | 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
+ * 奖品发货信息
+ *
+ * @author xiaolu
+ * @since 2022-12-13
  */
+@Data
+@NoArgsConstructor
 public class GoodsReq {
 
     /** 用户ID */
@@ -36,8 +39,6 @@ public class GoodsReq {
     /** 扩展信息，用于一些个性商品发放所需要的透传字段内容 */
     private String extInfo;
 
-    public GoodsReq() {
-    }
 
     public GoodsReq(String uId, String orderId, String awardId, String awardName, String awardContent) {
         this.uId = uId;
@@ -54,61 +55,5 @@ public class GoodsReq {
         this.awardName = awardName;
         this.awardContent = awardContent;
         this.shippingAddress = shippingAddress;
-    }
-
-    public String getuId() {
-        return uId;
-    }
-
-    public void setuId(String uId) {
-        this.uId = uId;
-    }
-
-    public String getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
-    }
-
-    public String getAwardId() {
-        return awardId;
-    }
-
-    public void setAwardId(String awardId) {
-        this.awardId = awardId;
-    }
-
-    public String getAwardName() {
-        return awardName;
-    }
-
-    public void setAwardName(String awardName) {
-        this.awardName = awardName;
-    }
-
-    public String getAwardContent() {
-        return awardContent;
-    }
-
-    public void setAwardContent(String awardContent) {
-        this.awardContent = awardContent;
-    }
-
-    public ShippingAddress getShippingAddress() {
-        return shippingAddress;
-    }
-
-    public void setShippingAddress(ShippingAddress shippingAddress) {
-        this.shippingAddress = shippingAddress;
-    }
-
-    public String getExtInfo() {
-        return extInfo;
-    }
-
-    public void setExtInfo(String extInfo) {
-        this.extInfo = extInfo;
     }
 }
