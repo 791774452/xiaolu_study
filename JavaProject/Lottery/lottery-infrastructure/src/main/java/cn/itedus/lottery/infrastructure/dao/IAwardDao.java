@@ -3,6 +3,8 @@ package cn.itedus.lottery.infrastructure.dao;
 import cn.itedus.lottery.infrastructure.po.Award;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
  * 奖品信息表DAO
  *
@@ -19,5 +21,13 @@ public interface IAwardDao {
      * @return        奖品信息
      */
     Award queryAwardInfo(String awardId);
+
+
+    /**
+     * 插入奖品配置
+     *
+     * @param list 奖品配置
+     */
+    void insertList(List<Award> list);
 
 }

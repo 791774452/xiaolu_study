@@ -23,6 +23,9 @@ public class Constants {
          * 非法参数
          */
         ILLEGAL_PARAMETER("0002", "非法参数"),
+        /**
+         * 主键冲突
+         */
         INDEX_DUP("0003", "主键冲突");
 
         private String code;

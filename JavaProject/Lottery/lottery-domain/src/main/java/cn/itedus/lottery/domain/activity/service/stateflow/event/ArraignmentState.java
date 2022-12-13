@@ -6,11 +6,10 @@ import cn.itedus.lottery.domain.activity.service.stateflow.AbstractState;
 import org.springframework.stereotype.Component;
 
 /**
- * @description: 提审状态
- * @author: 小傅哥，微信：fustack
- * @date: 2021/9/12
- * @github: https://github.com/fuzhengwei
- * @Copyright: 公众号：bugstack虫洞栈 | 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
+ * 提审状态
+ *
+ * @author xiaolu
+ * @since 2022-12-13
  */
 @Component
 public class ArraignmentState extends AbstractState {
