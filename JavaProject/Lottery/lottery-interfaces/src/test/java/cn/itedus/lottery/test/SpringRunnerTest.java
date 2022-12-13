@@ -23,10 +23,11 @@ import javax.annotation.Resource;
 import java.util.Date;
 
 /**
- * 单元测试
- *
- * @author xiaolu
- * @since 2022-12-12
+ * @description: SpringBoot 单元测试
+ * @author: 小傅哥，微信：fustack
+ * @date: 2021/9/4
+ * @github: https://github.com/fuzhengwei
+ * @Copyright: 公众号：bugstack虫洞栈 | 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -39,6 +40,7 @@ public class SpringRunnerTest {
 
     @Resource
     private IDrawExec drawExec;
+
     @Resource
     private DistributionGoodsFactory distributionGoodsFactory;
 
@@ -49,6 +51,7 @@ public class SpringRunnerTest {
         drawExec.doDrawExec(new DrawReq("小蜗牛", 10001L));
         drawExec.doDrawExec(new DrawReq("八杯水", 10001L));
     }
+
 
     @Test
     public void test_award() {
@@ -64,7 +67,7 @@ public class SpringRunnerTest {
 
         // 封装发奖参数，orderId：2109313442431 为模拟ID，需要在用户参与领奖活动时生成
         DrawAwardInfo drawAwardInfo = drawResult.getDrawAwardInfo();
-        GoodsReq goodsReq = new GoodsReq(drawResult.getUId(), "2109313442431", drawAwardInfo.getAwardId(), drawAwardInfo.getAwardName(), drawAwardInfo.getAwardContent());
+        GoodsReq goodsReq = new GoodsReq(drawResult.getuId(), "2109313442431", drawAwardInfo.getAwardId(), drawAwardInfo.getAwardName(), drawAwardInfo.getAwardContent());
 
         // 根据 awardType 从抽奖工厂中获取对应的发奖服务
         IDistributionGoods distributionGoodsService = distributionGoodsFactory.getDistributionGoodsService(drawAwardInfo.getAwardType());
@@ -75,17 +78,15 @@ public class SpringRunnerTest {
     @Test
     public void test_insert() {
         Activity activity = new Activity();
-        activity.setActivityId(100005L);
-        activity.setActivityName("小鹿读书");
+        activity.setActivityId(100001L);
+        activity.setActivityName("测试活动");
         activity.setActivityDesc("仅用于插入数据测试");
         activity.setBeginDateTime(new Date());
         activity.setEndDateTime(new Date());
         activity.setStockCount(100);
         activity.setTakeCount(10);
         activity.setState(0);
-        activity.setCreateTime(new Date());
-        activity.setUpdateTime(new Date());
-        activity.setCreator("xiaolu");
+        activity.setCreator("xiaofuge");
         activityDao.insert(activity);
     }
 
