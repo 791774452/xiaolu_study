@@ -168,6 +168,7 @@ public class ActivityTest {
 
     @Test
     public void test_alterState() {
+        logger.info("提交审核，测试：{}", JSON.toJSONString(stateHandler.doing(100001L, Constants.ActivityState.OPEN)));
         logger.info("提交审核，测试：{}", JSON.toJSONString(stateHandler.arraignment(100001L, Constants.ActivityState.EDIT)));
         logger.info("审核通过，测试：{}", JSON.toJSONString(stateHandler.checkPass(100001L, Constants.ActivityState.ARRAIGNMENT)));
         logger.info("运行活动，测试：{}", JSON.toJSONString(stateHandler.doing(100001L, Constants.ActivityState.PASS)));

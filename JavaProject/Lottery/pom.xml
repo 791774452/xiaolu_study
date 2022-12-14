@@ -64,6 +64,7 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+        <!--分库分表-->
     </dependencies>
 
     <properties>

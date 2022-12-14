@@ -1,5 +1,6 @@
 package cn.itedus.lottery.test;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Test;
 
 import java.security.SecureRandom;
@@ -74,7 +75,11 @@ public class ApiTest {
 
         System.out.println(map);
     }
-
+    @Test
+    public void test_id() {
+        String random = RandomStringUtils.randomNumeric(9);
+        System.out.println(random);
+    }
 }
 
 
