@@ -1,13 +1,29 @@
 server:
   port: 8080
 
-spring:
-  datasource:
-    username: root
-#    update user set authentication_string=password('mysql_108') where Host='localhost' and User='root';
-    password: mysql_108
-    url: jdbc:mysql://127.0.0.1:3306/lottery?useUnicode=true&characterEncoding=UTF-8
-    driver-class-name: com.mysql.jdbc.Driver
+# 多数据源路由配置
+mini-db-router:
+  jdbc:
+    datasource:
+      dbCount: 2
+      tbCount: 4
+      default: db00
+      list: db01,db02
+      db00:
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/lottery?useUnicode=true
+        username: root
+        password: mysql_108
+      db01:
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/lottery_01?useUnicode=true
+        username: root
+        password: mysql_108
+      db02:
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/lottery_02?useUnicode=true
+        username: root
+        password: mysql_108
 
 mybatis:
   mapper-locations: classpath:/mybatis/mapper/*.xml
@@ -20,7 +36,7 @@ dubbo:
     parameters:
       unicast: false
   registry:
-    address: N/A #multicast://224.5.6.7:1234
+    address: N/A #multicast://224.5.6.7:mysql_108
   protocol:
     name: dubbo
     port: 20880
