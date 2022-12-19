@@ -60,7 +60,7 @@ public class UserTakeActivity {
         this.id = id;
     }
 
-    public String getuId() {
+    public String getUId() {
         return uId;
     }
 

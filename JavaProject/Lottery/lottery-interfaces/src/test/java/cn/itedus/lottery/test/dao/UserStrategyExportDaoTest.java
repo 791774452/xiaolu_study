@@ -39,6 +39,7 @@ public class UserStrategyExportDaoTest {
     public void test_insert() {
         UserStrategyExport userStrategyExport = new UserStrategyExport();
         userStrategyExport.setuId("Uhdgkw766120d");
+        userStrategyExport.setuId("353sf453453535");
         userStrategyExport.setActivityId(idGeneratorMap.get(Constants.Ids.ShortCode).nextId());
         userStrategyExport.setOrderId(idGeneratorMap.get(Constants.Ids.SnowFlake).nextId());
         userStrategyExport.setStrategyId(idGeneratorMap.get(Constants.Ids.RandomNumeric).nextId());

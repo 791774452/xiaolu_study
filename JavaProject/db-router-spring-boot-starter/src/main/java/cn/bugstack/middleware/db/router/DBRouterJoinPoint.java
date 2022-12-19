@@ -17,11 +17,10 @@ import org.slf4j.LoggerFactory;
 import java.lang.reflect.Method;
 
 /**
- * @description: 数据路由切面，通过自定义注解的方式，拦截被切面的方法，进行数据库路由
- * @author: 小傅哥，微信：fustack
- * @date: 2021/9/22
- * @github: https://github.com/fuzhengwei
- * @Copyright: 公众号：bugstack虫洞栈 | 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
+ * 数据路由切面，通过自定义注解的方式，拦截被切面的方法，进行数据库路由
+ *
+ * @author xiaolu
+ * @since 2022-12-17
  */
 @Aspect
 public class DBRouterJoinPoint {

@@ -9,29 +9,23 @@ import cn.bugstack.middleware.db.router.strategy.impl.DBRouterStrategyHashCode;
 import cn.bugstack.middleware.db.router.util.PropertyUtil;
 import org.apache.ibatis.plugin.Interceptor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.sql.DataSource;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @description: 数据源配置解析
- * @author: 小傅哥，微信：fustack
- * @date: 2021/9/22
- * @github: https://github.com/fuzhengwei
- * @Copyright: 公众号：bugstack虫洞栈 | 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
+ * 数据源配置解析
+ *
+ * @author xiaolu
+ * @since 2022-12-17
  */
 @Configuration
 public class DataSourceAutoConfig implements EnvironmentAware {

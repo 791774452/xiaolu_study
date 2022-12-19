@@ -19,11 +19,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @description: Mybatis 拦截器，通过对 SQL 语句的拦截处理，修改分表信息
- * @author: 小傅哥，微信：fustack
- * @date: 2021/9/30
- * @github: https://github.com/fuzhengwei
- * @Copyright: 公众号：bugstack虫洞栈 | 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
+ * Mybatis 拦截器，通过对 SQL 语句的拦截处理，修改分表信息
+ *
+ * @author xiaolu
+ * @since 2022-12-17
  */
 @Intercepts({@Signature(type = StatementHandler.class, method = "prepare", args = {Connection.class, Integer.class})})
 public class DynamicMybatisPlugin implements Interceptor {
@@ -42,7 +41,7 @@ public class DynamicMybatisPlugin implements Interceptor {
         String className = id.substring(0, id.lastIndexOf("."));
         Class<?> clazz = Class.forName(className);
         DBRouterStrategy dbRouterStrategy = clazz.getAnnotation(DBRouterStrategy.class);
-        if (null == dbRouterStrategy || !dbRouterStrategy.splitTable()){
+        if (null == dbRouterStrategy || !dbRouterStrategy.splitTable()) {
             return invocation.proceed();
         }
 

@@ -53,12 +53,22 @@ public class Activity {
     private Integer stockCount;
 
     /**
+     * 库存剩余
+     */
+    private Integer stockSurplusCount;
+
+    /**
      * 每人可参与次数
      */
     private Integer takeCount;
 
     /**
-     * 活动状态：编辑、提审、撤审、通过、运行、拒绝、关闭、开启
+     * 策略ID
+     */
+    private Long strategyId;
+
+    /**
+     * 活动状态：1、编辑、2提审、3撤审、4通过、5运行(审核通过后worker扫描状态)、6拒绝、7关闭、8开启
      */
     private Integer state;
 

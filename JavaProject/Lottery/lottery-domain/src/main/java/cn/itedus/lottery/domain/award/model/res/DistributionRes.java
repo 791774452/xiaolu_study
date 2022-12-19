@@ -42,7 +42,7 @@ public class DistributionRes {
         this.statementId = statementId;
     }
 
-    public String getuId() {
+    public String getUId() {
         return uId;
     }
 

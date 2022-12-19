@@ -51,7 +51,7 @@ public class UserStrategyExport {
         this.id = id;
     }
 
-    public String getuId() {
+    public String getUId() {
         return uId;
     }
 
