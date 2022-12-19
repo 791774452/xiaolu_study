@@ -67,6 +67,7 @@ public class ActivityTest {
         activity.setStockCount(100);
         activity.setTakeCount(10);
         activity.setState(Constants.ActivityState.EDIT.getCode());
+        activity.setStrategyId(10001L);
         activity.setCreator("xiaofuge");
 
         StrategyVO strategy = new StrategyVO();

@@ -14,25 +14,26 @@ import java.util.List;
 public interface IStrategyRepository {
 
     /**
-     * 查询策略配置
-     * @param strategyId strategyId
-     * @return StrategyRich
+     * 查询策略信息
+     *
+     * @param strategyId 策略ID
+     * @return           策略信息
      */
     StrategyRich queryStrategyRich(Long strategyId);
 
     /**
-     * 查询奖品
+     * 查询奖励配置
      *
-     * @param awardId awardId
-     * @return Award
+     * @param awardId   奖励ID
+     * @return          奖励信息
      */
     AwardBriefVO queryAwardInfo(String awardId);
 
     /**
-     * 排除奖品ID
+     * 查询无库存奖品
      *
-     * @param strategyId strategyId
-     * @return List<String>
+     * @param strategyId 策略ID
+     * @return           无库存奖品
      */
     List<String> queryNoStockStrategyAwardList(Long strategyId);
 
@@ -43,4 +44,5 @@ public interface IStrategyRepository {
      * @return           扣减结果
      */
     boolean deductStock(Long strategyId, String awardId);
+
 }

@@ -1,5 +1,9 @@
 package cn.itedus.lottery.infrastructure.po;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.Date;
 
 /**
@@ -8,6 +12,9 @@ import java.util.Date;
  * @author xiaolu
  * @since 2022-12-15
  */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserTakeActivity {
 
     /**
@@ -38,6 +45,16 @@ public class UserTakeActivity {
      * 领取次数
      */
     private Integer takeCount;
+
+    /**
+     * 策略ID
+     */
+    private Long strategyId;
+    /**
+     * 活动单使用状态 0未使用、1已使用
+     * Constants.TaskState
+     */
+    private Integer state;
     /**
      * 防重ID
      */
@@ -51,84 +68,4 @@ public class UserTakeActivity {
      */
     private Date updateTime;
 
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUId() {
-        return uId;
-    }
-
-    public void setuId(String uId) {
-        this.uId = uId;
-    }
-
-    public Long getTakeId() {
-        return takeId;
-    }
-
-    public void setTakeId(Long takeId) {
-        this.takeId = takeId;
-    }
-
-    public Long getActivityId() {
-        return activityId;
-    }
-
-    public void setActivityId(Long activityId) {
-        this.activityId = activityId;
-    }
-
-    public String getActivityName() {
-        return activityName;
-    }
-
-    public void setActivityName(String activityName) {
-        this.activityName = activityName;
-    }
-
-    public Date getTakeDate() {
-        return takeDate;
-    }
-
-    public void setTakeDate(Date takeDate) {
-        this.takeDate = takeDate;
-    }
-
-    public Integer getTakeCount() {
-        return takeCount;
-    }
-
-    public void setTakeCount(Integer takeCount) {
-        this.takeCount = takeCount;
-    }
-
-    public String getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
 }
