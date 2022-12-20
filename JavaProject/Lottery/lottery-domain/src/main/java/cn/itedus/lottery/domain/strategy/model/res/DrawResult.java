@@ -1,7 +1,7 @@
 package cn.itedus.lottery.domain.strategy.model.res;
 
 import cn.itedus.lottery.common.Constants;
-import cn.itedus.lottery.domain.strategy.model.vo.DrawAwardInfo;
+import cn.itedus.lottery.domain.strategy.model.vo.DrawAwardVO;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -33,7 +33,7 @@ public class DrawResult {
     /**
      * 中奖奖品信息
      */
-    private DrawAwardInfo drawAwardInfo;
+    private DrawAwardVO drawAwardInfo;
 
     public DrawResult(String uId, Long strategyId, Integer drawState) {
         this.uId = uId;
@@ -41,7 +41,7 @@ public class DrawResult {
         this.drawState = drawState;
     }
 
-    public DrawResult(String uId, Long strategyId, Integer drawState, DrawAwardInfo drawAwardInfo) {
+    public DrawResult(String uId, Long strategyId, Integer drawState, DrawAwardVO drawAwardInfo) {
         this.uId = uId;
         this.strategyId = strategyId;
         this.drawState = drawState;

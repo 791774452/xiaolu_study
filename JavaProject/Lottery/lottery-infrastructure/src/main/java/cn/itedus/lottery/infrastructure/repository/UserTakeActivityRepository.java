@@ -10,7 +10,7 @@ import cn.itedus.lottery.infrastructure.dao.IUserTakeActivityDao;
 import cn.itedus.lottery.infrastructure.po.UserStrategyExport;
 import cn.itedus.lottery.infrastructure.po.UserTakeActivity;
 import cn.itedus.lottery.infrastructure.po.UserTakeActivityCount;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -21,7 +21,7 @@ import java.util.Date;
  * @author xiaolu
  * @since 2022-12-17
  */
-@Component
+@Repository
 public class UserTakeActivityRepository implements IUserTakeActivityRepository {
 
     @Resource

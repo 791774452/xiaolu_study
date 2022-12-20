@@ -15,7 +15,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DrawAwardInfo {
+public class DrawAwardVO {
 
     /**
      * 奖品ID
@@ -48,7 +48,7 @@ public class DrawAwardInfo {
      * 发奖时间
      */
     private Date grantDate;
-    public DrawAwardInfo(String awardId, Integer awardType, String awardName,String awardContent) {
+    public DrawAwardVO(String awardId, Integer awardType, String awardName, String awardContent) {
         this.awardId = awardId;
         this.awardType = awardType;
         this.awardName = awardName;

@@ -1,7 +1,7 @@
 package cn.itedus.lottery.infrastructure.repository;
 
 import cn.itedus.lottery.domain.award.repository.IOrderRepository;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 /**
  * 奖品表仓储服务
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * @author xiaolu
  * @since 2022-12-13
  */
-@Component
+@Repository
 public class OrderRepository implements IOrderRepository {
 
 }

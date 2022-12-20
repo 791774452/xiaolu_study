@@ -1,0 +1,22 @@
+package cn.itedus.lottery.domain.rule.service.engine;
+
+import cn.itedus.lottery.domain.rule.model.req.DecisionMatterReq;
+import cn.itedus.lottery.domain.rule.model.res.EngineResult;
+
+/**
+ * 规则过滤器引擎
+ *
+ * @author xiaolu
+ * @since 2022-12-20
+ */
+public interface EngineFilter {
+
+    /**
+     * 规则过滤器接口
+     *
+     * @param matter      规则决策物料
+     * @return            规则决策结果
+     */
+    EngineResult process(final DecisionMatterReq matter);
+
+}
