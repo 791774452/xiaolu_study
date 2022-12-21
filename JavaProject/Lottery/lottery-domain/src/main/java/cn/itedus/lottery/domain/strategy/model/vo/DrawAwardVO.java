@@ -16,7 +16,10 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DrawAwardVO {
-
+    /**
+     * 用户ID
+     */
+    private String uId;
     /**
      * 奖品ID
      */
@@ -48,7 +51,9 @@ public class DrawAwardVO {
      * 发奖时间
      */
     private Date grantDate;
-    public DrawAwardVO(String awardId, Integer awardType, String awardName, String awardContent) {
+
+    public DrawAwardVO(String uId, String awardId, Integer awardType, String awardName, String awardContent) {
+        this.uId = uId;
         this.awardId = awardId;
         this.awardType = awardType;
         this.awardName = awardName;

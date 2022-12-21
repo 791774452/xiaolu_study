@@ -34,7 +34,11 @@ public class Constants {
         /**
          * 未中奖
          */
-        LOSING_DRAW("D001", "未中奖");
+        LOSING_DRAW("D001", "未中奖"),
+        /**
+         * 量化人群规则执行失败
+         */
+        RULE_ERR("D002", "量化人群规则执行失败");
 
         private String code;
         private String info;

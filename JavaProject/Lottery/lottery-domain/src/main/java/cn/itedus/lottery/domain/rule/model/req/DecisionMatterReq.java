@@ -1,6 +1,8 @@
 package cn.itedus.lottery.domain.rule.model.req;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Map;
 
@@ -11,6 +13,8 @@ import java.util.Map;
  * @since 2022-12-20
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class DecisionMatterReq {
 
     /**
