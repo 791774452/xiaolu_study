@@ -72,9 +72,9 @@ public class UserTakeActivityRepository implements IUserTakeActivityRepository {
         userTakeActivity.setActivityName(activityName);
         userTakeActivity.setTakeDate(takeDate);
         if (null == userTakeLeftCount) {
-            userTakeActivity.setTakeCount(takeCount - userTakeLeftCount + 1);
+            userTakeActivity.setTakeCount(1);
         } else {
-            userTakeActivity.setTakeCount(takeCount - userTakeLeftCount);
+            userTakeActivity.setTakeCount(takeCount - userTakeLeftCount + 1);
         }
         userTakeActivity.setStrategyId(strategyId);
         userTakeActivity.setState(Constants.TaskState.NO_USED.getCode());
