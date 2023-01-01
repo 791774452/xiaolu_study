@@ -22,6 +22,11 @@ public abstract class BaseActivityPartake extends ActivityPartakeSupport impleme
     @Resource
     private Map<Constants.Ids, IIdGenerator> idGeneratorMap;
 
+    /**
+     * 参与活动
+     * @param req 入参
+     * @return    领取结果
+     */
     @Override
     public PartakeResult doPartake(PartakeReq req) {
 
